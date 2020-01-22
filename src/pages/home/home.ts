@@ -1,9 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 
+/**
+ * @IonicPage() permite referenciar a classe na forma de string, 
+ * facilitando a implementação do lazyloading nas páginas do projeto.
+ * @Component() indica que a classe é um Controller.
+ */
+
+@IonicPage() 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-home', // Selector
+  templateUrl: 'home.html' // Arquivo controlado
 })
 export class HomePage {
 

@@ -3,7 +3,22 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+/**
+ * import { HomePage } from '../pages/home/home';
+ * desativado para a implementacao do lazyloading.
+ */
+
+/**
+ * Toda a pagína html que é uma view possui um controlador.
+ * O arquivo app.html tem como controller o arquivo app.component.ts
+ */
+
+/**
+ * Declarando o nome da classe na forma de String conseguimos a flexibilidade
+ * do lazyloading sem a necessidade de importar a classe da página. lembrando
+ * que para que classe possa ser refeenciada como lazyloading ela precisa
+ * ter o decoration @IonicPage() como está presente no arquivo home.ts
+ */
 
 @Component({
   templateUrl: 'app.html'
@@ -11,16 +26,16 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: string = 'HomePage'; //Alterado de any para string implementação lazyloading.
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: string}>; //component de any para string implementação lazyloading.
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage }
+      { title: 'Home', component: 'HomePage' }
     ];
 
   }
