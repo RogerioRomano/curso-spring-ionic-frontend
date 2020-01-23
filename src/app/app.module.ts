@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { CategoriaService } from '../services/domain/categoria.service';
+import { ErrorInterceptorProvider } from '../intecerptors/error-interceptior';
 
 /**
  * import { HomePage } from '../pages/home/home';
@@ -66,7 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    CategoriaService
+    CategoriaService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule { }
