@@ -1,10 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
-import { MyApp } from './app.component';
-import { StatusBar } from '@ionic-native/status-bar';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { CategoriaService } from '../services/domain/categoria.service';
+
 /**
  * import { HomePage } from '../pages/home/home';
  * desativado para a implementação via lazyloading.
@@ -27,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  * - Entrycomponents: Quando o objeto adicionado no Declations for uma página e não apenas um 
  *                   componente ele precisa ser adicionado no entryComponents.
  * - Providers: Contém as classes que quando injetadas terão seus objetos criados como uma 
- *             instância única para este módulo. Sempre que injetarmos os objetos do tipo 
+ *             instância única para toda a aplição. Sempre que injetarmos os objetos do tipo 
  *             especificado em uma classe do módulo teremos a mesma instância.
  * A palavra export indica que a classe ou outro elemento pode ser importado por outro arquivo.
  * Lazyloading:
@@ -48,10 +50,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp, // Nome da classe especificado no controller app.component.ts
     /**HomePage Nome da classe especificado no controller home.ts\
      * desativado para a implentemtação via lazyloading.
-     */         
+     */
   ],
   imports: [
     BrowserModule, //módulo básico da estrutura de uma aplicação ionic.
+    HttpClientModule,
     IonicModule.forRoot(MyApp), //módulo básico da estrutura de uma aplicação ionic.
   ],
   bootstrap: [IonicApp],
@@ -62,7 +65,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CategoriaService
   ]
 })
-export class AppModule {}
+export class AppModule { }
