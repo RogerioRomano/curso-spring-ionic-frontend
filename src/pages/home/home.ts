@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, MenuController } from 'ionic-angular';
 
 /**
  * @IonicPage() permite referenciar a classe na forma de string, 
@@ -7,21 +7,31 @@ import { NavController, IonicPage } from 'ionic-angular';
  * @Component() indica que a classe é um Controller.
  */
 
-@IonicPage() 
+@IonicPage()
 @Component({
   selector: 'page-home', // Selector
   templateUrl: 'home.html' // Arquivo controlado
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) { // Objeto NavControler injetado via construtor
+  // Objeto NavControler injetado via construtor
+  constructor(public navCtrl: NavController, public menu: MenuController) {
 
   }
-  login(){
+
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewDidLeave(){
+    this.menu.swipeEnable(false);
+  }
+
+  login() {
     /**
      * .push empilha a página e habilita o botão voltar. 
      * .setRoot abre a pagina de maneira independente com menu.
-     */ 
-    this.navCtrl.setRoot('CategoriasPage'); 
+     */
+    this.navCtrl.setRoot('CategoriasPage');
   }
 }
