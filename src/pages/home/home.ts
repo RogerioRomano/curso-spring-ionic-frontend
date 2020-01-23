@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, MenuController } from 'ionic-angular';
+import { CredenciaisDTO } from '../../models/credenciais.dto';
 
 /**
  * @IonicPage() permite referenciar a classe na forma de string, 
@@ -13,6 +14,11 @@ import { NavController, IonicPage, MenuController } from 'ionic-angular';
   templateUrl: 'home.html' // Arquivo controlado
 })
 export class HomePage {
+
+  creds : CredenciaisDTO  = {
+    email : "",
+    senha : ""
+  };
 
   // Objeto NavControler injetado via construtor
   constructor(public navCtrl: NavController, public menu: MenuController) {
@@ -32,6 +38,7 @@ export class HomePage {
      * .push empilha a página e habilita o botão voltar. 
      * .setRoot abre a pagina de maneira independente com menu.
      */
+    console.log(this.creds);
     this.navCtrl.setRoot('CategoriasPage');
   }
 }
