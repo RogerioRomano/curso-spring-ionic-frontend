@@ -3,7 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+/**
+ * import { HomePage } from '../pages/home/home';
+ * desativado para a implementação via lazyloading.
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -42,8 +46,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp, // Nome da classe especificado no controller app.component.ts
-    /**HomePage
-     * Nome da classe especificado no controller home.ts\
+    /**HomePage Nome da classe especificado no controller home.ts\
      * desativado para a implentemtação via lazyloading.
      */         
   ],

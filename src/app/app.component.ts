@@ -15,9 +15,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 /**
  * Declarando o nome da classe na forma de String conseguimos a flexibilidade
- * do lazyloading sem a necessidade de importar a classe da página. lembrando
- * que para que classe possa ser refeenciada como lazyloading ela precisa
- * ter o decoration @IonicPage() como está presente no arquivo home.ts
+ * do lazy loading sem a necessidade de importar a classe da página. Lembrando
+ * que para que classe possa ser referenciada como lazy loading ela precisa
+ * ter o decoration @IonicPage() presente no arquivo home.ts
  */
 
 @Component({
@@ -26,9 +26,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: string = 'HomePage'; //Alterado de any para string implementação lazyloading.
+  rootPage: string = 'HomePage'; //Alterado de any para string implementação lazy loading.
 
-  pages: Array<{title: string, component: string}>; //component de any para string implementação lazyloading.
+  pages: Array<{title: string, component: string}>; //component de any para string implementação lazy loading.
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
