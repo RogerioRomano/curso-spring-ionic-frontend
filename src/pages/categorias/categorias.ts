@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CategoriaService } from '../../services/domain/categoria.service';
+import { CategoriaDTO } from '../../models/categoria.dto';
+import { API_CONFIG } from '../../app/config/api.config';
 
 /**
  * Generated class for the CategoriasPage page.
@@ -16,6 +18,9 @@ import { CategoriaService } from '../../services/domain/categoria.service';
 })
 export class CategoriasPage {
 
+  bucketUrl : string = API_CONFIG.bucketBaseUrl;
+  items: CategoriaDTO[];
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -23,9 +28,15 @@ export class CategoriasPage {
   }
 
   ionViewDidLoad() {
+    /**
+     * Por se tratar de chamada assíncrona precisamos nos inscrever para executar algo
+     * quando a resposta chegar ".subscribe"
+     * fuction callback, passamos uma função anônima como argumento de outra função.
+     * ex: "arrowfunction =>"
+     */ 
     this.categoriaService.findAll()
       .subscribe(response => { 
-      console.log(response);
+      this.items = response;
     },
     error => {
       console.log(error);
