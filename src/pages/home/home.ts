@@ -14,8 +14,14 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController) { // Objeto NavControler injetado via construtor
 
   }
-
+  login(){
+    /**
+     * .push empilha a página e habilita o botão voltar. 
+     * .setRoot abre a pagina de maneira independente com menu.
+     */ 
+    this.navCtrl.setRoot('CategoriasPage'); 
+  }
 }
