@@ -6,7 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { CategoriaService } from '../services/domain/categoria.service';
-import { ErrorInterceptorProvider } from '../intecerptors/error-interceptior';
+import { ErrorInterceptorProvider } from '../intecerptors/error-interceptor';
+import { AuthService } from '../services/auth.service';
 
 /**
  * import { HomePage } from '../pages/home/home';
@@ -60,7 +61,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp
     //HomePage Desativado para a implementação via lazyloading
   ],
   providers: [
@@ -68,7 +69,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CategoriaService,
-    ErrorInterceptorProvider
+    ErrorInterceptorProvider,
+    AuthService
   ]
 })
-export class AppModule { }
+export class AppModule {}
