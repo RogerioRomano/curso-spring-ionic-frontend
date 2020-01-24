@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { CategoriaService } from '../services/domain/categoria.service';
 import { ErrorInterceptorProvider } from '../intecerptors/error-interceptor';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 
 /**
  * import { HomePage } from '../pages/home/home';
@@ -70,7 +71,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CategoriaService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    StorageService
   ]
 })
 export class AppModule {}
