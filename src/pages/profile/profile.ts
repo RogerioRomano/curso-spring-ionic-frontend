@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
-import { ClienteDTO } from "../../models/ClienteDTO.1";
 import { ClienteService } from '../../services/domain/cliente.service';
 import { API_CONFIG } from '../../app/config/api.config';
+import { ClienteDTO } from '../../models/cliente.dto';
 
 @IonicPage()
 @Component({
