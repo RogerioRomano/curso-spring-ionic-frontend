@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-{{email}}
+  <ion-avatar>
+    <!--Aqui o ? Significa operador de navegação segura.
+        Se a variável não estiver preenchida do angular nao apresenta erro na página. --> 
+    <img class="circle" [src]="cliente?.imageUrl || 'assets/imgs/avatar-blank.png'">
+  </ion-avatar>
+  <h2 text-center>{{cliente?.nome}}</h2>
+  <p text-center>{{cliente?.email}}</p>
 </ion-content>

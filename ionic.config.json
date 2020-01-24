@@ -4,5 +4,6 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "IONIC_CMDOPTS_SERVE_OPEN:": 0
 }
