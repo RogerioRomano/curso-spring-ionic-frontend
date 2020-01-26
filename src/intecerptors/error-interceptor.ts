@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { StorageService } from '../services/storage.service';
 import { AlertController } from 'ionic-angular';
+import { FieldMessage } from '../models/fieldmessage';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -30,8 +31,11 @@ export class ErrorInterceptor implements HttpInterceptor {
                     case 403:
                         this.handle403();
                         break;
+                    case 422:
+                        this.handle422(errorObj);
+                        break;
                     default:
-                        this.handleDefaultError(errorObj);    
+                        this.handleDefaultError(errorObj);
                 }
 
                 console.log("Erro detectado pelo interceptor:");
@@ -40,14 +44,13 @@ export class ErrorInterceptor implements HttpInterceptor {
             }) as any;
     }
 
-
     handle403() {
         this.storage.setLocalUser(null);
     }
 
-    handle401(){
+    handle401() {
         let alert = this.alertCtrl.create({
-            title : 'Erro 401: Falha de autenticação', 
+            title: 'Erro 401: Falha de autenticação',
             message: 'Email ou senha incorretos',
             enableBackdropDismiss: false,
             buttons: [
@@ -59,18 +62,40 @@ export class ErrorInterceptor implements HttpInterceptor {
         alert.present();
     }
 
+    handle422(errorObj) {
+        let alert = this.alertCtrl.create({
+            title: 'Erro 422: validação',
+            message: this.listErrors(errorObj.errors),
+            enableBackdropDismiss: false,
+            buttons: [
+                {
+                    text: 'Ok'
+                }
+            ]
+        });
+        alert.present();
+    }
+
     handleDefaultError(errorObj) {
         let alert = this.alertCtrl.create({
-            title : 'Erro' + errorObj.status + ': ' + errorObj.error, 
+            title: 'Erro ' + errorObj.status + ': ' + errorObj.error,
             message: errorObj.message,
             enableBackdropDismiss: false,
             buttons: [
                 {
-                    text: 'OK'
+                    text: 'Ok'
                 }
             ]
         });
-        alert.present();    
+        alert.present();
+    }
+
+    private listErrors(messages: FieldMessage[]): string {
+        let s: string = '';
+        for (var i = 0; i < messages.length; i++) {
+            s += '<p><strong>' + messages[i].fieldName + "</strong>: " + messages[i].message + '<p>';
+        }
+        return s;
     }
 }
 
