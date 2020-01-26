@@ -18,13 +18,13 @@ import { API_CONFIG } from '../../app/config/api.config';
 })
 export class CategoriasPage {
 
-  bucketUrl : string = API_CONFIG.bucketBaseUrl;
+  bucketUrl: string = API_CONFIG.bucketBaseUrl;
   items: CategoriaDTO[];
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public categoriaService : CategoriaService) {
+    public categoriaService: CategoriaService) {
   }
 
   ionViewDidLoad() {
@@ -33,13 +33,15 @@ export class CategoriasPage {
      * quando a resposta chegar ".subscribe"
      * fuction callback, passamos uma função anônima como argumento de outra função.
      * ex: "arrowfunction =>"
-     */ 
+     */
     this.categoriaService.findAll()
-      .subscribe(response => { 
-      this.items = response;
-    },
-    error => {
-      
-    });
+      .subscribe(response => {
+        this.items = response;
+      },
+        error => { });
+  }
+
+  showProdutos() {
+   this.navCtrl.push('ProdutosPage');
   }
 }
