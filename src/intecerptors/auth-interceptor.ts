@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from '../services/storage.service';
-import { API_CONFIG } from '../app/config/api.config';
+import { API_CONFIG } from '../config/api.config';
 //import { Observable } from 'rxjs/Rx'; // IMPORTANTE: IMPORT ATUALIZADO
 
 @Injectable()
