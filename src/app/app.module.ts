@@ -13,6 +13,7 @@ import { ClienteService } from '../services/domain/cliente.service';
 import { AuthInterceptorProvider } from '../intecerptors/auth-interceptor';
 import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
+import { ImageUtilService } from '../services/image-util.service';
 
 /**
  * import { HomePage } from '../pages/home/home';
@@ -80,7 +81,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StorageService,
     ClienteService, 
     ProdutoService,
-    CartService
+    CartService, 
+    ImageUtilService
   ]
 })
 export class AppModule {}
