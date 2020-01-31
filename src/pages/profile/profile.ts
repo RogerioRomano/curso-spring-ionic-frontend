@@ -30,7 +30,7 @@ export class ProfilePage {
     this.loadData();
   }
 
-  loadData(){
+  loadData() {
     let localUser = this.storage.getLocalUser();
     if (localUser && localUser.email) {
       this.clienteService.findByEmail(localUser.email)
@@ -80,10 +80,28 @@ export class ProfilePage {
         this.picture = null;
         this.loadData();
       },
-      error =>{});
+        error => { });
   }
 
-  cancel(){
-    this.picture = null  
+  cancel() {
+    this.picture = null
+  }
+
+  getGalleryPicture() {
+
+    this.cameraOn = true;
+
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      this.picture = 'data:image/png;base64,' + imageData;
+      this.cameraOn = false;
+    }, (err) => {
+    });
   }
 }
